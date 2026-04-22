@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/geruz/Downloads/esercizio_ricette_mockup_slides.html -->
+<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup Esercizio — Pagina Ricette</title>
+  <style>
+    :root{
+      --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#94a3b8;
+      --accent:#38bdf8; --border:#334155; --chip:#082f49;
+      --green:#22c55e; --yellow:#f59e0b; --red:#ef4444;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#0b1220,#111827 45%,#0f172a);color:var(--text)}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(15,23,42,.95);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+    .topbar h1{font-size:17px;margin:0}.topbar .hint{font-size:13px;color:var(--muted)}
+    .deck{max-width:1280px;margin:24px auto;padding:0 18px 60px}
+
+    /* ---- Slide generica ---- */
+    .slide{min-height:88vh;margin:0 0 28px;padding:40px;background:rgba(17,24,39,.94);border:1px solid var(--border);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+    .slide.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .slide.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start}
+    .num{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--chip);color:#bae6fd;font-size:13px;margin-bottom:14px}
+    h2{font-size:34px;margin:0 0 16px;line-height:1.1}
+    h3{font-size:19px;margin:0 0 10px;color:#cbd5e1}
+    p{font-size:18px;line-height:1.45;margin:0 0 12px}
+    ul,ol{margin:10px 0 0 22px;padding:0} li{font-size:18px;margin:8px 0;line-height:1.35}
+    .box{border:1px solid var(--border);border-radius:14px;padding:16px;background:#0b1220;margin-bottom:14px}
+    .box h4{margin:0 0 8px;font-size:16px;color:var(--accent)}
+    .small{font-size:15px;color:var(--muted)}
+    .code{padding:14px;border-radius:12px;border:1px solid var(--border);font-family:Consolas,monospace;font-size:14px;white-space:pre-wrap;background:#020617;overflow:auto;line-height:1.6}
+    .tag{display:inline-block;padding:5px 10px;border-radius:999px;margin:3px 4px 0 0;font-size:13px;background:#1e293b;border:1px solid var(--border);color:#cbd5e1}
+    .tag.g{background:#14532d;border-color:#22c55e;color:#bbf7d0}
+    .tag.y{background:#451a03;border-color:#f59e0b;color:#fde68a}
+    .tag.r{background:#450a0a;border-color:#ef4444;color:#fecaca}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{border:1px solid var(--border);padding:10px;text-align:left;font-size:16px;vertical-align:top}
+    th{background:#0b1220;color:#bae6fd}
+
+    /* ---- Mockup UI ---- */
+    .ui-wrap{background:#f8fafc;border-radius:16px;overflow:hidden;border:2px solid var(--border);color:#1e293b}
+    .ui-header{background:#e11d48;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .ui-header h1{color:white;font-size:20px;margin:0}
+    .ui-search{display:flex;flex:1;max-width:340px;gap:0}
+    .ui-search input{flex:1;padding:8px 12px;border:none;border-radius:8px 0 0 8px;font-size:14px;outline:none}
+    .ui-search button{padding:8px 14px;background:#9f1239;color:white;border:none;border-radius:0 8px 8px 0;cursor:pointer;font-size:14px}
+    .ui-body{padding:20px}
+    .ui-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .ui-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.10)}
+    .ui-card img{width:100%;height:130px;object-fit:cover}
+    .ui-card-body{padding:12px}
+    .ui-card-body h3{font-size:15px;margin:0 0 8px;color:#0f172a}
+    .ui-badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;margin-right:4px;margin-bottom:6px}
+    .ui-badge.cat{background:#fce7f3;color:#be185d}
+    .ui-badge.area{background:#e0f2fe;color:#0369a1}
+    .ui-btn{width:100%;padding:8px;background:#e11d48;color:white;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:bold}
+    .ui-footer{background:#1e293b;color:#94a3b8;text-align:center;padding:12px;font-size:13px}
+    .ui-placeholder{height:130px;background:linear-gradient(135deg,#e2e8f0,#cbd5e1);display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:13px}
+
+    /* annotazioni frecce */
+    .anno{position:relative}
+    .anno-label{background:#f59e0b;color:#1e293b;font-size:12px;font-weight:bold;padding:4px 8px;border-radius:6px;white-space:nowrap}
+
+    .footer{font-size:13px;color:var(--muted);text-align:center;padding:8px}
+    @media(max-width:900px){.slide.two,.slide.three{grid-template-columns:1fr}.ui-grid{grid-template-columns:1fr}}
+    @media print{body{background:white;color:black}.topbar{display:none}.slide{page-break-after:always;min-height:100vh;box-shadow:none;background:white;color:black;border:1px solid #ccc}.ui-wrap{border-color:#ccc}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Mockup Esercizio — Pagina Ricette con TheMealDB</h1>
+    <div class="hint">Solo HTML e CSS — dati scritti a mano</div>
+  </div>
+  <div class="deck">
+
+    <!-- SLIDE 1 – TITOLO -->
+    <section class="slide">
+      <div class="num">Slide 1</div>
+      <h2>Esercizio: La Pagina delle Ricette</h2>
+      <p>Costruirai una pagina web statica che elenca alcune ricette. I dati li scrivi a mano nell'HTML. Nelle prossime lezioni questa stessa pagina verrà popolata automaticamente da un'API reale.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
+        <div class="box">
+          <h4>Cosa userai</h4>
+          <div class="tag g">HTML5 semantico</div>
+          <div class="tag g">CSS / Bootstrap</div>
+          <div class="tag g">Flexbox / Grid</div>
+          <div class="tag y">Dati statici scritti a mano</div>
+        </div>
+        <div class="box">
+          <h4>Cosa NON userai (ancora)</h4>
+          <div class="tag r">JavaScript</div>
+          <div class="tag r">JSON / XML</div>
+          <div class="tag r">Chiamate API</div>
+          <div class="tag r">Python</div>
+        </div>
+      </div>
+      <div class="box" style="margin-top:14px">
+        <h4>Consegna</h4>
+        <p class="small">Realizza una pagina <b>ricette.html</b> che mostri una griglia di almeno tre ricette. Ogni ricetta deve avere immagine, nome, categoria e area geografica. La pagina deve avere un'intestazione con titolo e campo di ricerca, e un piede di pagina. I dati possono essere inventati o copiati da themealdb.com.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 – OBIETTIVO VISIVO -->
+    <section class="slide">
+      <div class="num">Slide 2</div>
+      <h2>Obiettivo visivo finale</h2>
+      <p>Questo è il risultato atteso della pagina che costruirai:</p>
+      <div class="ui-wrap">
+        <div class="ui-header">
+          <h1>🍽️ MealBook</h1>
+          <div class="ui-search">
+            <input type="text" placeholder="Cerca una ricetta..." disabled="">
+            <button>Cerca</button>
+          </div>
+        </div>
+        <div class="ui-body">
+          <div class="ui-grid">
+            <div class="ui-card">
+              <img src="./Mockup Esercizio — Pagina Ricette_files/wyxwsp1486979827.jpg" alt="Chicken Tikka" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+              <div class="ui-placeholder" style="display:none">🍗 Immagine ricetta</div>
+              <div class="ui-card-body">
+                <h3>Chicken Tikka Masala</h3>
+                <span class="ui-badge cat">🏷️ Chicken</span>
+                <span class="ui-badge area">🌍 Indian</span>
+                <br>
+                <button class="ui-btn">Vedi ricetta →</button>
+              </div>
+            </div>
+            <div class="ui-card">
+              <img src="./Mockup Esercizio — Pagina Ricette_files/wpputp1511812960.jpg" alt="Pasta" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+              <div class="ui-placeholder" style="display:none">🍝 Immagine ricetta</div>
+              <div class="ui-card-body">
+                <h3>Spaghetti Carbonara</h3>
+                <span class="ui-badge cat">🏷️ Pasta</span>
+                <span class="ui-badge area">🌍 Italian</span>
+                <br>
+                <button class="ui-btn">Vedi ricetta →</button>
+              </div>
+            </div>
+            <div class="ui-card">
+              <img src="./Mockup Esercizio — Pagina Ricette_files/adxcbq1619787919.jpg" alt="Sushi" onerror="this.style.display=&#39;none&#39;;this.nextElementSibling.style.display=&#39;flex&#39;">
+              <div class="ui-placeholder" style="display:none">🍣 Immagine ricetta</div>
+              <div class="ui-card-body">
+                <h3>Salmon Nigiri</h3>
+                <span class="ui-badge cat">🏷️ Seafood</span>
+                <span class="ui-badge area">🌍 Japanese</span>
+                <br>
+                <button class="ui-btn">Vedi ricetta →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-footer">© 2026 MealBook — Dati forniti da TheMealDB</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 – STRUTTURA HTML -->
+    <section class="slide two">
+      <div>
+        <div class="num">Slide 3</div>
+        <h2>Struttura HTML della pagina</h2>
+        <p>La pagina è divisa in tre sezioni semantiche principali:</p>
+        <div class="box">
+          <h4>header</h4>
+          <p class="small">Contiene il titolo del sito e il campo di ricerca. Usa Flexbox per affiancarli.</p>
+        </div>
+        <div class="box">
+          <h4>main</h4>
+          <p class="small">Contiene la griglia di card. Usa CSS Grid o Bootstrap col per le tre colonne.</p>
+        </div>
+        <div class="box">
+          <h4>footer</h4>
+          <p class="small">Testo di crediti centrato. Colore scuro, testo chiaro.</p>
+        </div>
+      </div>
+      <div>
+        
+      </div>
+    </section>
+
+    <!-- SLIDE 4 – STRUTTURA CARD -->
+    <section class="slide two">
+      <div>
+        <div class="num">Slide 4</div>
+        <h2>Struttura di una card ricetta</h2>
+        <p>Ogni card ha sempre gli stessi elementi. Questo è importante: nelle lezioni future sarà il Python a generare queste card in modo automatico a partire dai dati JSON.</p>
+        <ul>
+          <li>Immagine della ricetta con <b>img</b> e attributo src.</li>
+          <li>Nome della ricetta con <b>h3</b>.</li>
+          <li>Categoria con uno <b>span</b> stilizzato come badge.</li>
+          <li>Area geografica con un altro <b>span</b> badge.</li>
+          <li>Pulsante "Vedi ricetta" con <b>button</b>.</li>
+        </ul>
+        <div class="box">
+          <h4>Nota importante</h4>
+          <p class="small">I nomi delle classi che usi oggi devono restare gli stessi nella versione dinamica. Sceglili in modo chiaro: <b>card</b>, <b>card-img</b>, <b>card-nome</b>, <b>badge-categoria</b>, <b>badge-area</b>.</p>
+        </div>
+      </div>
+      <div>
+        
+      </div>
+    </section>
+
+    <!-- SLIDE 5 – CSS DA SCRIVERE -->
+    <section class="slide two">
+      <div>
+        <div class="num">Slide 5</div>
+        <h2>CSS da realizzare</h2>
+        <p>Il foglio di stile <b>style.css</b> deve contenere almeno questi blocchi:</p>
+        <table>
+          <tbody><tr><th>Selettore</th><th>Cosa deve fare</th></tr>
+          <tr><td>header</td><td>Sfondo colorato, Flexbox, padding, gap tra elementi.</td></tr>
+          <tr><td>input, button</td><td>Bordi arrotondati, padding, stile coerente con l'header.</td></tr>
+          <tr><td>.griglia</td><td>Grid a 3 colonne, gap tra card.</td></tr>
+          <tr><td>.card</td><td>Sfondo bianco, bordo arrotondato, shadow, overflow hidden.</td></tr>
+          <tr><td>.card-img</td><td>Larghezza 100%, altezza fissa, object-fit cover.</td></tr>
+          <tr><td>.card-body</td><td>Padding interno.</td></tr>
+          <tr><td>.badge-categoria .badge-area</td><td>Colori diversi, border-radius, font piccolo.</td></tr>
+          <tr><td>.btn-ricetta</td><td>Larghezza 100%, colore, hover.</td></tr>
+          <tr><td>footer</td><td>Sfondo scuro, testo centrato e chiaro.</td></tr>
+        </tbody></table>
+      </div>
+      
+    </section>
+
+    <!-- SLIDE 6 – DATI FINTI -->
+    <section class="slide two">
+      <div>
+        <div class="num">Slide 6</div>
+        <h2>Dati da usare nell'HTML</h2>
+        <p>Copia questi dati nell'HTML per le tre card. Sono presi direttamente da TheMealDB, quindi quando arriverà il JSON li riconoscerai.</p>
+        <div class="box">
+          <h4>Come trovare le immagini</h4>
+          <p class="small">Vai su <b>themealdb.com</b>, cerca una ricetta, clic tasto destro sull'immagine e copia l'indirizzo. Incollalo nell'attributo src dell'img.</p>
+        </div>
+        <div class="box">
+          <h4>Alternative se le immagini non caricano</h4>
+          <p class="small">Usa <b>placeholder.pics/200</b> come src per avere un'immagine grigia segnaposto durante lo sviluppo.</p>
+        </div>
+      </div>
+      <div>
+        <table>
+          <tbody><tr><th>Campo</th><th>Ricetta 1</th><th>Ricetta 2</th><th>Ricetta 3</th></tr>
+          <tr><td>Nome</td><td>Chicken Tikka Masala</td><td>Spaghetti Carbonara</td><td>Beef Stroganoff</td></tr>
+          <tr><td>Categoria</td><td>Chicken</td><td>Pasta</td><td>Beef</td></tr>
+          <tr><td>Area</td><td>Indian</td><td>Italian</td><td>Russian</td></tr>
+          <tr><td>src img</td><td>themealdb.com/ …wyxwsp…</td><td>themealdb.com/ …wpputp…</td><td>themealdb.com/ …svprys…</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 – COLLEGAMENTO CON LE LEZIONI FUTURE -->
+    <section class="slide">
+      <div class="num">Slide 7</div>
+      <h2>Perché costruiamo questa pagina adesso</h2>
+      <p>Questa pagina statica che crei oggi diventerà il punto di arrivo di tutto quello che studieremo nelle prossime settimane.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-top:8px">
+        <div class="box" style="text-align:center">
+          <div style="font-size:32px;margin-bottom:8px">📄</div>
+          <h4>Oggi</h4>
+          <p class="small">Pagina HTML+CSS con dati scritti a mano.</p>
+        </div>
+        <div class="box" style="text-align:center">
+          <div style="font-size:32px;margin-bottom:8px">📦</div>
+          <h4>Lezione XML/JSON</h4>
+          <p class="small">Leggiamo la risposta JSON di TheMealDB e ne capiamo la struttura.</p>
+        </div>
+        <div class="box" style="text-align:center">
+          <div style="font-size:32px;margin-bottom:8px">🐍</div>
+          <h4>Lezione Python API</h4>
+          <p class="small">Chiamiamo TheMealDB con requests e stampiamo i dati.</p>
+        </div>
+        <div class="box" style="text-align:center">
+          <div style="font-size:32px;margin-bottom:8px">🚀</div>
+          <h4>Fine modulo</h4>
+          <p class="small">Python genera automaticamente la pagina HTML con i dati reali dall'API.</p>
+        </div>
+      </div>
+      <div class="box" style="margin-top:16px">
+        <h4>Messaggio per i ragazzi</h4>
+        <p class="small">La struttura HTML che scrivi oggi — i nomi delle classi, i tag usati, l'organizzazione delle card — sarà esattamente quella che il codice Python dovrà riprodurre in automatico. Se la struttura è pulita e coerente adesso, il lavoro futuro sarà molto più semplice.</p>
+      </div>
+    </section>
+
+    
+  </div>
+
+</body></html>
